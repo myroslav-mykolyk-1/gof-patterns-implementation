@@ -1,11 +1,21 @@
 package com.mykolyk.creational.factory;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        LoggerFactory consoleLoggerFactory = new ConsoleLoggerFactory();
-        consoleLoggerFactory.logMessage("This is a Console log.");
+        LoggerFactory loggerFactory = createLogger();
+        loggerFactory.logMessage("This is a log!");
+    }
 
-        LoggerFactory fileLoggerFactory = new FileLoggerFactory();
-        fileLoggerFactory.logMessage("This is a File log");
+    static LoggerFactory createLogger() {
+        System.out.println("Choose Logging type (Write the number):\n1 - Console Log\n2 - File log");
+        Scanner scanner = new Scanner(System.in);
+        int loggingTypeOption = scanner.nextInt();
+        return switch (loggingTypeOption) {
+            case 1 -> new ConsoleLoggerFactory();
+            case 2 -> new FileLoggerFactory();
+            default -> throw new RuntimeException("Type is not present at the menu!");
+        };
     }
 }
