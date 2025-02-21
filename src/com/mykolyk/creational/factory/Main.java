@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         LoggerFactory loggerFactory = createLogger();
-        loggerFactory.logMessage("This is a log!");
+        loggerFactory.logMessage("This is a first log!");
+        loggerFactory.logMessage("This is a second log!");
     }
 
     static LoggerFactory createLogger() {
